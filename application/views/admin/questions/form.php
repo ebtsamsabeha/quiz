@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <input type="text" class="form-control" name="ans_1" id="ans_1" 
-                       value="<?php if (isset($question->ans_1)) {echo $question->ans_1;} ?>"
+                       value="<?php if (isset($question->ans_1)) { echo htmlspecialchars($question->ans_1);} ?>"
                        placeholder="Enter Answer .. ">
             </div>
 
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <input type="text" class="form-control" name="ans_2" id="ans_2" 
-                       value="<?php if (isset($question->ans_2)) {  echo $question->ans_2;} ?>"
+                       value="<?php if (isset($question->ans_2)) {  echo htmlspecialchars($question->ans_2);} ?>"
                        placeholder="Enter Answer .. ">
             </div>
             
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <input type="text" class="form-control" name="ans_3" id="ans_3" 
-                       value="<?php if (isset($question->ans_3)) {  echo $question->ans_3;} ?>"
+                       value="<?php if (isset($question->ans_3)) {  echo htmlspecialchars($question->ans_3);} ?>"
                        placeholder="Enter Answer .. ">
             </div>
             <div class="form-group ">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <input type="text" class="form-control" name="ans_4" id="ans_4" 
-                       value="<?php if (isset($question->ans_4)) {  echo $question->ans_4;} ?>"
+                       value="<?php if (isset($question->ans_4)) {  echo htmlspecialchars($question->ans_4);} ?>"
                        placeholder="Enter Answer .. ">
             </div>
             <div class="form-group">

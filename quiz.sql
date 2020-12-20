@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2020 at 01:10 AM
+-- Generation Time: Dec 20, 2020 at 07:44 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -43,10 +43,15 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `title`, `ans_1`, `ans_2`, `ans_3`, `ans_4`, `correct_ans`) VALUES
-(1, 'Who is making the Web standards?', ' The World Wide Web Consortium', ' Mozilla', 'Google', 'Microsoft', 2),
-(3, 'Choose the correct HTML element for the largest heading:', '<heading>  ', '<h1>  ', '<head>', '<h6>', 2),
-(5, 'dkdkd', 'kkdkk', 'kdkkdkd', 'kkdkdkd', 'kdkkdkdkdk', 3),
-(6, 'dkdkd', 'kkdkk', 'kdkkdkd', 'kkdkdkd', 'kdkkdkdkdk', 3);
+(1, 'What does HTML stand for?', 'Hyper Text Markup Language ', 'Hyperlinks and Text Markup Language', 'Home Tool Markup Language', 'Home Markup ', 1),
+(2, 'Who is making the Web standards?', 'The World Wide Web Consortium', 'Mozilla', 'Microsoft', 'Google', 1),
+(3, 'Choose the correct HTML element for the largest heading:', '<h1>', '<h6>', '<head>', '<heading>', 1),
+(4, 'What is the correct HTML element for inserting a line break?', '<br>', '<break>', '<lb>', '<b>', 1),
+(5, 'What is the correct HTML for adding a background color?', '<background>yellow</background>', '<body style=', '<body bg=', '<body background=', 2),
+(6, 'Choose the correct HTML element to define important text', '<i>', '<b>', '<important>', '<strong>  ', 4),
+(7, 'Choose the correct HTML element to define emphasized text', '<italic>', '<i>', '<em>', '<im>', 3),
+(8, 'What is the correct HTML for creating a hyperlink?', '<a>http://www.w3schools.com</a>', '<a href=', '<a url=', '<a name=', 2),
+(9, 'Which character is used to indicate an end tag?', '*', '/ ', '<', '^', 2);
 
 -- --------------------------------------------------------
 
@@ -67,11 +72,8 @@ CREATE TABLE `tests` (
 
 INSERT INTO `tests` (`id`, `title`, `status`, `duration`) VALUES
 (1, 'HTML', 1, '00:00:00'),
-(2, 'Css', 1, '00:00:00'),
-(4, 'Php', 1, '00:00:00'),
-(7, 'SQL', 1, '00:00:00'),
-(8, 'dddkdkkdkd', 0, '00:00:00'),
-(9, 'Css4', 1, '00:00:00');
+(2, 'CSS', 1, '00:00:00'),
+(3, 'BootStrap', 1, '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -89,13 +91,15 @@ CREATE TABLE `tests_questions` (
 --
 
 INSERT INTO `tests_questions` (`test_id`, `quest_id`) VALUES
-(1, 3),
-(2, 3),
-(4, 3),
-(2, 5),
 (1, 1),
-(2, 1),
-(4, 1);
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 9),
+(1, 8),
+(1, 7);
 
 -- --------------------------------------------------------
 
@@ -108,6 +112,21 @@ CREATE TABLE `test_answers` (
   `quest_id` int(11) NOT NULL,
   `ans` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `test_answers`
+--
+
+INSERT INTO `test_answers` (`test_result_id`, `quest_id`, `ans`) VALUES
+(1, 1, 1),
+(1, 2, 3),
+(1, 3, 1),
+(1, 4, 1),
+(1, 5, 3),
+(1, 6, 1),
+(1, 9, 2),
+(1, 8, 2),
+(1, 7, 3);
 
 -- --------------------------------------------------------
 
@@ -122,6 +141,13 @@ CREATE TABLE `test_result` (
   `start_time` datetime NOT NULL,
   `duration` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `test_result`
+--
+
+INSERT INTO `test_result` (`id`, `user_id`, `test_id`, `start_time`, `duration`) VALUES
+(1, 1, 1, '2020-12-20 07:42:21', '00:27:00');
 
 -- --------------------------------------------------------
 
@@ -143,10 +169,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `type`, `created_at`) VALUES
-(1, 'ebtsamsabeha', 'ebtsamsabeha@gmail.com', '$2y$10$t6G0ix5nWbkdqQA4u5qlL.M4Tki41k0WenxppHt793FbmUDzwYeVy', 1, '2020-12-18 22:01:37'),
-(2, 'ebtsamsabeham', 'ebtsamsabehak@gmail.com', '$2y$10$iH4PXqdhHudxzYNAURjJ9u0EvaBjOwunctB/kygI4kArdbnzHS5/q', 2, '2020-12-15 20:09:40'),
-(4, 'ebtsamsabehakdkdkdk', 'ebtsamsabeha@gmadil.com', '$2y$10$czMb.l5BsHpuXveaF/t8ueBqFU3KV4xcAT6/8btejl4Uzy1GP1xYK', 2, '2020-12-15 20:48:08'),
-(5, 'norasa', 'norasa@yahoo.com', '$2y$10$7e2QViS97d0DPitwPHca1u/6af6jn/myFlFu0L4hEW5XHasVQttLW', 0, '2020-12-17 20:41:53');
+(1, 'ebtsamsabeha', 'ebtsamsabeha@gmail.com', '$2y$10$t6G0ix5nWbkdqQA4u5qlL.M4Tki41k0WenxppHt793FbmUDzwYeVy', 1, '2020-12-20 05:42:15');
 
 -- --------------------------------------------------------
 
@@ -164,13 +187,7 @@ CREATE TABLE `user_tests` (
 --
 
 INSERT INTO `user_tests` (`user_id`, `test_id`) VALUES
-(4, 7),
-(5, 2),
-(1, 1),
-(1, 2),
-(1, 4),
-(1, 7),
-(1, 8);
+(1, 1);
 
 --
 -- Indexes for dumped tables
@@ -231,25 +248,25 @@ ALTER TABLE `user_tests`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `test_result`
 --
 ALTER TABLE `test_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

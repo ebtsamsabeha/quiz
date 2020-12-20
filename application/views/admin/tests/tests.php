@@ -27,7 +27,10 @@
                             <td><?php echo $test->id ?></td>
                             <td><?php echo $test->title ?></td>
                             <td class=" center"><a href="<?php echo base_url('admin/tests/edit/').$test->id;?>" class="editor_edit">Edit <i class="fa fa-pencil"></i></a> 
-                                / <a href="<?php echo base_url('admin/tests/delete/').$test->id;?>" class="editor_remove">Delete <i class="fa fa-remove"></i></a></td>
+                                / <a href="<?php echo base_url('admin/tests/delete/').$test->id;?>" class="editor_remove">Delete <i class="fa fa-remove"></i>
+                                / <a href="<?php echo base_url('admin/tests/view/').$test->id;?>" >View Test <i class="fa fa-eye"></i>
+                                
+                                </a></td>
                         </tr>
                         <?php
                     }

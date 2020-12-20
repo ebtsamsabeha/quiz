@@ -10,7 +10,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="exampleQ" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -28,7 +28,7 @@
                             <td><?php echo $question->id ?></td>
                             <td><?php echo $question->title ?></td>
                             <td><?php $correct_answer='ans_'."$question->correct_ans";
-                            if(isset($question->$correct_answer))echo htmlspecialchars($question->$correct_answer); ?></td>
+                            if(isset($question->$correct_answer))echo  htmlspecialchars($question->$correct_answer); ?></td>
                             <td class=" center"><a href="<?php echo base_url('admin/questions/edit/').$question->id;?>" class="editor_edit">Edit <i class="fa fa-pencil"></i></a> 
                                 / <a href="<?php echo base_url('admin/questions/delete/').$question->id;?>" class="editor_remove">Delete <i class="fa fa-remove"></i></a></td>
                         </tr>
