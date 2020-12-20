@@ -9,6 +9,11 @@
         </li>
     </ul>
     <ul class="navbar-nav ml-auto">
+        <?php if(isset($_SESSION['is_admin'])){?>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="<?php echo base_url('admin');?>" class="nav-link">Admin</a>
+            </li>
+        <?php }?>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?php echo base_url('logout');?>" class="nav-link">Logout</a>
         </li>

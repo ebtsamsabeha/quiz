@@ -26,7 +26,9 @@ class LoginController extends CI_Controller {
     public function index() {
 
         // create the data object
-
+        if(isset($_SESSION['site_logged_in'])|| isset($_SESSION['logged_in'])){
+            redirect("/");
+        }
         $data = new ArrayObject;
         $formData = $this->input->post(NULL, TRUE);
         if ($formData) {

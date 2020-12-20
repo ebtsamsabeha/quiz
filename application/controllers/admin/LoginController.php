@@ -32,7 +32,9 @@ class LoginController extends CI_Controller {
     public function index() {
 
         // create the data object
-
+        if (isset($_SESSION['logged_in'])) {
+            redirect("/admin");
+        }
         $data = new ArrayObject;
         $formData = $this->input->post(NULL, TRUE);
         if ($formData) {
@@ -56,7 +58,7 @@ class LoginController extends CI_Controller {
             if ($this->user_model->userLogin($email, $password)) {
 
                 $user = $this->user_model->getUserByEmail($email);
-                if($user->type == 1){
+                if ($user->type == 1) {
                     // set session user datas
                     $_SESSION['user_id'] = (int) $user->id;
                     $_SESSION['username'] = (string) $user->username;
@@ -69,13 +71,13 @@ class LoginController extends CI_Controller {
 
                     // user login ok
                     redirect('/admin');
-                }else{
+                } else {
                     // login failed
-                $data['error'] = "Can't Access DashBoard" ;
+                    $data['error'] = "Can't Access DashBoard";
 
-                // send error to the view
-                $this->load->view('admin/templates/header');
-                $this->load->view('admin/login', $data);
+                    // send error to the view
+                    $this->load->view('admin/templates/header');
+                    $this->load->view('admin/login', $data);
                 }
             } else {
 
